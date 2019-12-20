@@ -11,6 +11,7 @@ export class PokemonDetailComponent implements OnInit {
 
   id: string;
   pokemon: any;
+  loading: boolean;
 
   constructor(public api: ApiService,
               private route: ActivatedRoute,
@@ -19,9 +20,10 @@ export class PokemonDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
+      this.loading = true;
       this.api.getPokemonByNumber(+this.id).subscribe(data => {
         this.pokemon = data;
-        console.log(this.pokemon);
+        this.loading = false;
       });
     });
   }

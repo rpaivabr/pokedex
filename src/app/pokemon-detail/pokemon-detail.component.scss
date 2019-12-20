@@ -1,29 +1,23 @@
-.flex-center {
-  display: flex;
-  justify-content: center;
-}
+@import "abstracts/variables";
 
 .mat-card {
   display: inline-block;
   margin: 1rem;
   &.main {
-    width: 500px;
-    max-width: 85%;
+    width: $width-card-main;
+    max-width: $max-width-card-main;
+    animation: moveInRight .5s ease-out;
   }
   &.secondary {
-    width: 200px;
-    max-width: 30%;
+    width: $width-card-secondary;
+    max-width: $max-width-card-secondary;
+    animation: moveInBottom 1s ease-out;
   }
 }
 .mat-chip {
-  background-color: #a9a778;
   border-radius: 5px;
   min-height: 25px;
-  &.type__fire {
-    background-color: #ee7f33 !important;
-  }
 }
-
 .type {
   border-radius: 5px;
   min-height: 25px;
@@ -35,73 +29,65 @@
   font-size: 14px;
   font-weight: 500;
   margin: 5px 5px;
-
   &__fire {
-    background-color: #ee7f33;
+    background-color: $color-type-fire;
   }
   &__normal {
-    background-color: #a9a778;
+    background-color: $color-type-normal;
   }
   &__water {
-    background-color: #6890f0;
+    background-color: $color-type-water;
   }
   &__grass {
-    background-color: #78c84f;
+    background-color: $color-type-grass;
   }
   &__electric {
-    background-color: #f8cf32;
+    background-color: $color-type-electric;
   }
   &__ice {
-    background-color: #98d8d7;
+    background-color: $color-type-ice;
   }
   &__fighting {
-    background-color: #c03228;
+    background-color: $color-type-fighting;
   }
   &__poison {
-    background-color: #a040a1;
+    background-color: $color-type-poison;
   }
   &__ground {
-    background-color: #e0c069;
+    background-color: $color-type-ground;
   }
   &__flying {
-    background-color: #a790ef;
+    background-color: $color-type-flying;
   }
   &__psychic {
-    background-color: #e95587;
+    background-color: $color-type-psychic;
   }
   &__bug {
-    background-color: #a8b821;
+    background-color: $color-type-bug;
   }
   &__rock {
-    background-color: #b6a037;
+    background-color: $color-type-rock;
   }
   &__ghost {
-    background-color: #705797;
+    background-color: $color-type-ghost;
   }
   &__dragon {
-    background-color: #724ef9;
+    background-color: $color-type-dragon;
   }
   &__dark {
-    background-color: #6f5848;
+    background-color: $color-type-dark;
   }
   &__steel {
-    background-color: #b8b8d0;
+    background-color: $color-type-steel;
   }
   &__fairy {
-    background-color: #f4c8e2;
+    background-color: $color-type-fairy;
   }
 }
-
-ul {
-  margin: 0;
-  padding: 0 0 0 20px;
-}
-
 .image {
-  width: 120px;
-  max-width: 80%;
-  height: 100px;
+  width: $img-width;
+  max-width: $img-max-width;
+  height: $img-height;
   padding: 1rem;
   margin: 0 auto;
 }
-

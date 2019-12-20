@@ -1,6 +1,6 @@
 <section class="detail">
     <div class="flex-center">
-        <mat-card class="main" *ngIf="!pokemon">
+        <mat-card class="main" *ngIf="!pokemon && !loading">
             <mat-card-header>
                 <mat-card-title id="not-found">Pokémon not found!</mat-card-title>
             </mat-card-header>
@@ -10,7 +10,7 @@
                 </section>
             </mat-card-content>
         </mat-card>
-        <mat-card class="main" *ngIf="pokemon">
+        <mat-card class="main" *ngIf="pokemon && !loading">
             <mat-card-header>
                 <mat-card-title>{{pokemon['Name']}}</mat-card-title>
                 <mat-card-subtitle>
@@ -39,14 +39,15 @@
                                 class="type type__{{weaknesses | lowercase}}">{{weaknesses}}</mat-chip>
                         </mat-chip-list>
                     </p>
-                    <div style="display: flex;">
+                    <div class="flex">
                         <div style="flex: 1">
                             Ataques rápidos:
                             <ul>
                                 <li *ngFor="let fastAttack of pokemon['Fast Attack(s)']">
                                     <mat-chip class="type type__{{fastAttack.Type | lowercase}}">{{fastAttack.Type}}
                                     </mat-chip>
-                                    {{fastAttack.Name}} (<span style="color: rgb(247, 92, 92);">{{fastAttack.Damage}}</span>)
+                                    {{fastAttack.Name}} (<span
+                                        style="color: rgb(247, 92, 92);">{{fastAttack.Damage}}</span>)
                                 </li>
                             </ul>
                         </div>
@@ -57,7 +58,8 @@
                                     <mat-chip class="type type__{{specialAttack.Type | lowercase}}">
                                         {{specialAttack.Type}}
                                     </mat-chip>
-                                    {{specialAttack.Name}} (<span style="color: rgb(107, 107, 255);">{{specialAttack.Damage}}</span>)
+                                    {{specialAttack.Name}} (<span
+                                        style="color: rgb(107, 107, 255);">{{specialAttack.Damage}}</span>)
                                 </li>
                             </ul>
                         </div>
@@ -68,8 +70,8 @@
         </mat-card>
     </div>
 
-    <div class="flex-center" *ngIf="pokemon">
-        <mat-card class="secondary abs-center" *ngFor="let evolution of pokemon['Next evolution(s)']">
+    <div class="flex-center" *ngIf="pokemon && !loading">
+        <mat-card class="secondary" *ngFor="let evolution of pokemon['Next evolution(s)']">
             <mat-card-header>
                 <mat-card-title>{{evolution['Name']}}</mat-card-title>
             </mat-card-header>
@@ -77,8 +79,8 @@
             <mat-card-content>
                 <section class="description" style="display: flex; flex-direction: column;">
                     <img mat-card-image src="assets/img/{{+evolution['Number']}}.png" class="image">
-                    <!-- <p style="flex: 0 0 1; width: 400px; padding: 0 1rem;">Descrição: {{pokemon['About']}}</p> -->
-                    <button mat-raised-button color="primary" (click)="goToDetail(+evolution['Number'])">Details</button>
+                    <button mat-raised-button color="primary"
+                        (click)="goToDetail(+evolution['Number'])">Details</button>
                 </section>
             </mat-card-content>
         </mat-card>

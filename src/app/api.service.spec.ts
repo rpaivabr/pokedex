@@ -1,10 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ApiService } from './api.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
-import { doesNotThrow } from 'assert';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ApiService', () => {
 

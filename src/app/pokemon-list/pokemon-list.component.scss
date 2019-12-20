@@ -1,5 +1,9 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
 table {
-  width: 100%;
+  width: 90%;
+  @include relCenterX;
   text-align: center;
 }
 
@@ -12,12 +16,10 @@ table {
 }
 
 .mat-form-field {
+  @include relCenterX;
   width: 80%;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .input {
-  color: #fff;
+  color: $color-light;
 }
