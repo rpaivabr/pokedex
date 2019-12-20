@@ -23,8 +23,8 @@ export class PokemonDetailComponent implements OnInit {
       this.loading = true;
       this.api.getPokemonByNumber(+this.id).subscribe(data => {
         this.pokemon = data;
-        this.loading = false;
       });
+      setTimeout(() => this.loading = false, 300);
     });
   }
 
