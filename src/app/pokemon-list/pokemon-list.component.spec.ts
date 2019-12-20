@@ -1,11 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PokemonListComponent } from './pokemon-list.component';
 import { MaterialModule } from '../material.module';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PokemonListComponent', () => {
   let component: PokemonListComponent;
@@ -16,7 +14,7 @@ describe('PokemonListComponent', () => {
       imports: [
         BrowserAnimationsModule,
         MaterialModule,
-        HttpClientTestingModule,
+        HttpClientModule,
         RouterTestingModule.withRoutes([])
       ],
       declarations: [ PokemonListComponent ]
@@ -32,5 +30,24 @@ describe('PokemonListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should filter by "char" and "cha"', async (done) => {
+    fixture.whenStable().then(() => {
+      let results = component.dataSource.data.filter(el => el.Name.toLowerCase().includes('char')).length;
+      expect(results).toBe(3);
+      results = component.dataSource.data.filter(el => el.Name.toLowerCase().includes('cha')).length;
+      expect(results).toBe(6);
+      done();
+    });
+  });
+
+  it('should remove empty objects', async (done) => {
+    component.api.getPokemonData().subscribe(data => {
+      const filteredData = component.removeEmpty(data);
+      expect(component.findEmpty(data)).toBeTruthy();
+      expect(component.findEmpty(filteredData)).toBeFalsy();
+      done();
+    });
   });
 });

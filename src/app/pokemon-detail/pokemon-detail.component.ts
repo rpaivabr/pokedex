@@ -12,7 +12,7 @@ export class PokemonDetailComponent implements OnInit {
   id: string;
   pokemon: any;
 
-  constructor(private api: ApiService,
+  constructor(public api: ApiService,
               private route: ActivatedRoute,
               private router: Router) { }
 

@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,9 +15,10 @@ export class PokemonListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['Name', 'Generation', 'Types', 'Total Attack(s)', 'Details'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatInput, {static: true}) inputFilter: MatInput;
   rowOver;
 
-  constructor(private api: ApiService,
+  constructor(public api: ApiService,
               private router: Router) { }
 
   ngOnInit() {
@@ -26,8 +28,9 @@ export class PokemonListComponent implements OnInit, AfterViewInit {
     };
     // retrieve list from api
     this.api.getPokemonData().subscribe(data => {
-      this.dataSource.data = data.filter((value: any[]) => Object.keys(value).length !== 0);
+      this.dataSource.data = this.removeEmpty(data);
     });
+    this.doFilter(this.inputFilter.value);
   }
 
   ngAfterViewInit() {
@@ -40,6 +43,14 @@ export class PokemonListComponent implements OnInit, AfterViewInit {
 
   goToDetail(id: number) {
     this.router.navigateByUrl(`/${id}`);
+  }
+
+  removeEmpty(data): any[] {
+    return data.filter((value: any[]) => Object.keys(value).length !== 0);
+  }
+
+  findEmpty(data): boolean {
+    return !!data.find((el: any) => Object.keys(el).length === 0);
   }
 
 }

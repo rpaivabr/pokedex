@@ -2,7 +2,7 @@
     <div class="flex-center">
         <mat-card class="main" *ngIf="!pokemon">
             <mat-card-header>
-                <mat-card-title>Pokémon not found!</mat-card-title>
+                <mat-card-title id="not-found">Pokémon not found!</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <section style="text-align: center;">
@@ -46,7 +46,7 @@
                                 <li *ngFor="let fastAttack of pokemon['Fast Attack(s)']">
                                     <mat-chip class="type type__{{fastAttack.Type | lowercase}}">{{fastAttack.Type}}
                                     </mat-chip>
-                                    {{fastAttack.Name}} (<span style="color: red;">{{fastAttack.Damage}}</span>)
+                                    {{fastAttack.Name}} (<span style="color: rgb(247, 92, 92);">{{fastAttack.Damage}}</span>)
                                 </li>
                             </ul>
                         </div>
@@ -57,7 +57,7 @@
                                     <mat-chip class="type type__{{specialAttack.Type | lowercase}}">
                                         {{specialAttack.Type}}
                                     </mat-chip>
-                                    {{specialAttack.Name}} (<span style="color: red;">{{specialAttack.Damage}}</span>)
+                                    {{specialAttack.Name}} (<span style="color: rgb(107, 107, 255);">{{specialAttack.Damage}}</span>)
                                 </li>
                             </ul>
                         </div>

@@ -16,9 +16,9 @@ describe('PokemonDetailComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([])
       ],
-      declarations: [ PokemonDetailComponent ]
+      declarations: [PokemonDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,4 +30,5 @@ describe('PokemonDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -1,5 +1,6 @@
 <mat-form-field>
-    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter by name...">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" 
+    placeholder="Filter by name..." class="input" #inputFilter>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
