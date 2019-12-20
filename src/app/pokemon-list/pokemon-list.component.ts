@@ -38,4 +38,8 @@ export class PokemonListComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLowerCase();
   }
 
+  goToDetail(id: number) {
+    this.router.navigateByUrl(`/${id}`);
+  }
+
 }

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoDialogComponent } from './info-dialog.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 describe('InfoDialogComponent', () => {
   let component: InfoDialogComponent;
@@ -8,7 +9,10 @@ describe('InfoDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoDialogComponent ]
+      declarations: [ InfoDialogComponent ],
+      providers: [
+        { provide: MatDialogRef, useValue: {}}
+      ]
     })
     .compileComponents();
   }));

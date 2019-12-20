@@ -23,8 +23,7 @@
 
             <mat-card-content>
                 <section class="description" style="display: flex;">
-                    <img mat-card-image src="assets/img/{{+pokemon['Number']}}.png" alt="Photo of a Shiba Inu"
-                        style="flex: 0 0 1; width: 100px; padding: 1rem;">
+                    <img mat-card-image src="assets/img/{{+pokemon['Number']}}.png" class="image">
                     <p style="flex: 0 0 1; width: 400px; padding: 0 1rem;">Descrição: {{pokemon['About']}}</p>
                 </section>
                 <section class="information">
@@ -72,23 +71,14 @@
     <div class="flex-center" *ngIf="pokemon">
         <mat-card class="secondary abs-center" *ngFor="let evolution of pokemon['Next evolution(s)']">
             <mat-card-header>
-                <div mat-card-avatar></div>
                 <mat-card-title>{{evolution['Name']}}</mat-card-title>
-                <!-- <mat-card-subtitle>
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let type of pokemon['Types']" class="type type__{{type | lowercase}}">{{type}}
-                        </mat-chip>
-                    </mat-chip-list>
-                </mat-card-subtitle> -->
             </mat-card-header>
 
             <mat-card-content>
                 <section class="description" style="display: flex; flex-direction: column;">
-                    <img mat-card-image src="assets/img/{{+evolution['Number']}}.png" alt="Photo of a Shiba Inu"
-                        style="width: 120px; height: 100px; padding: 1rem; margin: 0 auto;">
+                    <img mat-card-image src="assets/img/{{+evolution['Number']}}.png" class="image">
                     <!-- <p style="flex: 0 0 1; width: 400px; padding: 0 1rem;">Descrição: {{pokemon['About']}}</p> -->
-                    <button mat-raised-button color="primary" routerLink="/{{+evolution['Number']}}">Pokemon
-                        Details</button>
+                    <button mat-raised-button color="primary" (click)="goToDetail(+evolution['Number'])">Details</button>
                 </section>
             </mat-card-content>
         </mat-card>

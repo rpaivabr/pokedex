@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -13,7 +13,8 @@ export class PokemonDetailComponent implements OnInit {
   pokemon: any;
 
   constructor(private api: ApiService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,6 +24,10 @@ export class PokemonDetailComponent implements OnInit {
         console.log(this.pokemon);
       });
     });
+  }
+
+  goToDetail(id: number) {
+    this.router.navigateByUrl(`/${id}`);
   }
 
 }

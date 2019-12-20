@@ -1,6 +1,6 @@
 .flex-center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .mat-card {
@@ -8,9 +8,11 @@
   margin: 1rem;
   &.main {
     width: 500px;
+    max-width: 85%;
   }
   &.secondary {
     width: 200px;
+    max-width: 30%;
   }
 }
 .mat-chip {
@@ -93,3 +95,17 @@
 ul {
   margin: 0;
 }
+
+.image {
+  width: 120px;
+  max-width: 80%;
+  height: 100px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+// @media only screen and (max-width: 600px) {
+//   .mat-raised-button {
+//     font-size: .7rem;
+//   }
+// }
