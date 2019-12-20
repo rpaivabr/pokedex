@@ -11,7 +11,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class PokemonListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['Name', 'Generation', 'Types', 'Special Attack(s)', 'Details'];
+  displayedColumns: string[] = ['Name', 'Generation', 'Types', 'Total Attack(s)', 'Details'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   rowOver;
@@ -25,7 +25,9 @@ export class PokemonListComponent implements OnInit, AfterViewInit {
       return data.Name.toLowerCase().includes(filter);
     };
     // retrieve list from api
-    this.api.getPokemonData().subscribe(data => this.dataSource.data = data.filter((value: any[]) => Object.keys(value).length !== 0));
+    this.api.getPokemonData().subscribe(data => {
+      this.dataSource.data = data.filter((value: any[]) => Object.keys(value).length !== 0);
+    });
   }
 
   ngAfterViewInit() {

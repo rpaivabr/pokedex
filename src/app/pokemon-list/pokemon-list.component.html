@@ -31,10 +31,10 @@
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="Special Attack(s)">
-        <th mat-header-cell *matHeaderCellDef> Special Attack(s) </th>
+    <ng-container matColumnDef="Total Attack(s)">
+        <th mat-header-cell *matHeaderCellDef> Total Attack(s) </th>
         <td mat-cell *matCellDef="let element">
-            {{ element['Special Attack(s)'] ? element['Special Attack(s)']?.length : '0'}} </td>
+            {{ element['Special Attack(s)']?.length + element['Fast Attack(s)']?.length}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
