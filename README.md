@@ -1,27 +1,29 @@
 # Pokedex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Este projeto é resultado de um desafio técnico para front-end. 
+`Utilizando javascript, desenvolva uma aplicação web que liste e detalhe todos os pokémons catalogados de acordo com as estórias. Resumindo, seu desafio é criar uma POKEDEX.`
+Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
-## Development server
+## Live Demo (Firebase Hosting)
+[Pokedex WebApp](https://podedex-synvia.web.app/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Execução em ambiente de desenvolvimento (local)
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ao clonar este repositório, entre na pasta e execute o comando `npm start` para rodar o projeto localmente. 
+Acesse no navegador a url `http://localhost:4200/`. A aplicação irá automaticamente recarregar se você salvar alguma alteração em alguns dos arquivos do código fonte.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Executar o comando `npm run build` para gerar o build do projeto na pasta `dist/`. 
+Para buildar para produção, utilizar o comando `npm run build:prod`.
 
-## Running unit tests
+## Rodar testes unitários
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Executar o comando `npm run test` para os testes unitários utilizando [Karma](https://karma-runner.github.io).
+Os arquivos de testes estão junto com os demais arquivos da aplicação, com a extensão `*.spec.ts`.
 
-## Running end-to-end tests
+## Estrutura SCSS (pré-compilador sass)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Os arquivos fonte scss estão na pasta `app/styles`, sendo os parciais, nas pastas `base` e `abstracts`, e o principal é o arquivo `app/styles/main.scss`.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
