@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <!-- <mat-icon>keyboard_backspace</mat-icon> -->
+        <span>POKEDEX (Angular project)</span>
+        <span style="flex: 1;"></span>
+        <mat-icon (click)="goHome()" *ngIf="router.url !== '/'">home</mat-icon>
+        <mat-icon (click)="openDialog()">info</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>

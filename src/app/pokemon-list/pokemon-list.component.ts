@@ -1,30 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { map, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['Name', 'Generation', 'Types', 'Special Attack(s)', 'Details'];
-  dataSource;
+  dataSource = new MatTableDataSource<any>();
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   rowOver;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.api.getPokemonData().subscribe(data => {
-        this.dataSource = data.filter(value => Object.keys(value).length !== 0);
-        console.log(this.dataSource);
-      });
+    // only filter by name
+    this.dataSource.filterPredicate = (data, filter): boolean => {
+      return data.Name.toLowerCase().includes(filter);
+    };
+    // retrieve list from api
+    this.api.getPokemonData().subscribe(data => this.dataSource.data = data.filter((value: any[]) => Object.keys(value).length !== 0));
   }
 
-  mouseover(row) {
-    console.log(row);
-    this.rowOver = row;
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
+  doFilter(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
 }

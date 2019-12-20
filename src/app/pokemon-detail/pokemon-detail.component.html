@@ -1,1 +1,96 @@
-<p>pokemon-detail works!</p>
+<section class="detail">
+    <div class="flex-center">
+        <mat-card class="main" *ngIf="!pokemon">
+            <mat-card-header>
+                <mat-card-title>Pokémon not found!</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <section style="text-align: center;">
+                    Please try again. <a routerLink="/" style="color: #fff;">Go to initial table</a>
+                </section>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="main" *ngIf="pokemon">
+            <mat-card-header>
+                <mat-card-title>{{pokemon['Name']}}</mat-card-title>
+                <mat-card-subtitle>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let type of pokemon['Types']" class="type type__{{type | lowercase}}">{{type}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <section class="description" style="display: flex;">
+                    <img mat-card-image src="assets/img/{{+pokemon['Number']}}.png" alt="Photo of a Shiba Inu"
+                        style="flex: 0 0 1; width: 100px; padding: 1rem;">
+                    <p style="flex: 0 0 1; width: 400px; padding: 0 1rem;">Descrição: {{pokemon['About']}}</p>
+                </section>
+                <section class="information">
+                    <p>Resistências:
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let resistant of pokemon['Resistant']"
+                                class="type type__{{resistant | lowercase}}">{{resistant}}</mat-chip>
+                        </mat-chip-list>
+                    </p>
+                    <p>Fraquezas:
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let weaknesses of pokemon['Weaknesses']"
+                                class="type type__{{weaknesses | lowercase}}">{{weaknesses}}</mat-chip>
+                        </mat-chip-list>
+                    </p>
+                    <div style="display: flex;">
+                        <div style="flex: 1">
+                            Ataques rápidos:
+                            <ul>
+                                <li *ngFor="let fastAttack of pokemon['Fast Attack(s)']">
+                                    <mat-chip class="type type__{{fastAttack.Type | lowercase}}">{{fastAttack.Type}}
+                                    </mat-chip>
+                                    {{fastAttack.Name}} (<span style="color: red;">{{fastAttack.Damage}}</span>)
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1">
+                            Ataques especiais:
+                            <ul>
+                                <li *ngFor="let specialAttack of pokemon['Special Attack(s)']">
+                                    <mat-chip class="type type__{{specialAttack.Type | lowercase}}">
+                                        {{specialAttack.Type}}
+                                    </mat-chip>
+                                    {{specialAttack.Name}} (<span style="color: red;">{{specialAttack.Damage}}</span>)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="flex-center" *ngIf="pokemon">
+        <mat-card class="secondary abs-center" *ngFor="let evolution of pokemon['Next evolution(s)']">
+            <mat-card-header>
+                <div mat-card-avatar></div>
+                <mat-card-title>{{evolution['Name']}}</mat-card-title>
+                <!-- <mat-card-subtitle>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let type of pokemon['Types']" class="type type__{{type | lowercase}}">{{type}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </mat-card-subtitle> -->
+            </mat-card-header>
+
+            <mat-card-content>
+                <section class="description" style="display: flex; flex-direction: column;">
+                    <img mat-card-image src="assets/img/{{+evolution['Number']}}.png" alt="Photo of a Shiba Inu"
+                        style="width: 120px; height: 100px; padding: 1rem; margin: 0 auto;">
+                    <!-- <p style="flex: 0 0 1; width: 400px; padding: 0 1rem;">Descrição: {{pokemon['About']}}</p> -->
+                    <button mat-raised-button color="primary" routerLink="/{{+evolution['Number']}}">Pokemon
+                        Details</button>
+                </section>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
